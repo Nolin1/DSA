@@ -21,9 +21,7 @@ int main(){
                 min = number[j];
                 index = j;
             }
-        
         }
-
             cout<<"[ Minimum value is: " << min<<" ]"<<endl;
             cout<<"Swaping between "<<min << " and " << number[i]<<endl<<endl;
 
