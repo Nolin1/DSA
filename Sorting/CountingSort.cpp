@@ -6,30 +6,59 @@ vector<int> countingSort(vector<int>& arr){
     int size = arr.size();
 
     int MAX = arr[0];
+    int MIN = arr[0];
 
-    for(int i: arr){
-        if(i>MAX)
+    for (int i : arr) {
+        if (i > MAX) {
             MAX = i;
+        } else if (i < MIN) {
+            MIN = i;
+        }
     }
 
-    vector<int> farr (MAX +1, 0);
 
-     for(int i = 0; i < size;i++){
-        farr[arr[i]]++;
+    // Handel Negative number:
+    if(MIN < 0){
+        for(int i = 0; i < size ; i++){
+            arr[i] = arr[i] - MIN;
+        }
+        MAX = MAX - MIN;
     }
 
-    for(int i = 1; i < farr.size(); i++){
-        farr[i] = farr[i] + farr[i-1];
+    vector<int> cfarr (MAX+1, 0);
+
+    for(int i = 0; i < size;i++){
+        cfarr[arr[i]]++;
     }
-    return farr;
+
+    for(int i = 1; i < cfarr.size(); i++){
+        cfarr[i] = cfarr[i] + cfarr[i-1];
+    }
+
+    vector<int> finalArr (size);
+
+    for(int i = size -1; i >= 0 ; i--){
+        finalArr[cfarr[arr[i]]-1] = arr[i];
+        cfarr[arr[i]]--;
+    }
+
+    // Handel Negative number:
+    if(MIN < 0){
+        for(int i = 0; i < size ; i++){
+            finalArr[i] = finalArr[i] + MIN;
+        }
+    }
+
+    return finalArr;
 }
+
 
 int main(){
     
-    vector<int> arr = {4, 3, 4, 2, 1, 3, 4, 2};
-    vector<int> farr = countingSort(arr);
+    vector<int> arr = {4, 3, 4, -4, 2, -1, 1, 3, 4, 2,-3};
+    vector<int> sortedArray = countingSort(arr);
 
-    for(int i: farr){
+    for(int i: sortedArray){
         cout<<i<<", ";
     }
     cout<<endl;
