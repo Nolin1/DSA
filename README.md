@@ -8,7 +8,7 @@
   <h1>Basic Sorting</h1>
   
   <h3>
-    This repository is based on the practice I did while studying Data Structures and Algorithms (DSA).
+    This repository is based on the practice I did while studying Data Structures and Algorithms 1(DSA_1).
   </h3>
   
   <h5>
