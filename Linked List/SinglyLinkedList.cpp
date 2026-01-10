@@ -50,6 +50,25 @@ void addNodeToEnd(int data){
     }
 }
 
+
+
+void deleteAtEnd(){
+
+    if(head == nullptr){
+        cout<<"No node to delete"<<endl;
+    }else{
+        Node* traveller = head;
+        Node* follower = nullptr;
+
+        while(traveller -> nextNodeAddress != nullptr){
+            follower = traveller;
+            traveller = traveller ->nextNodeAddress;
+        }
+        follower->nextNodeAddress = nullptr;
+        delete(traveller);
+    }
+}
+
 void printList(){
     Node* printer = head;
     while(printer != nullptr){
@@ -65,6 +84,9 @@ int main(){
     addNodeToFront(23);
     addNodeToFront(12);
     addNodeToEnd(1);
+    printList();
+    deleteAtEnd();
+    deleteAtEnd();
     printList();
 
     return 0;
