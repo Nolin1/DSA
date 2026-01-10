@@ -50,7 +50,16 @@ void addNodeToEnd(int data){
     }
 }
 
-
+void deleteAtFront(){
+    
+    if(head == nullptr){
+        cout<<"No node to delete"<<endl;
+    }else{
+        Node* temp = head;
+        head = head ->nextNodeAddress;
+        delete(temp);
+    }
+}
 
 void deleteAtEnd(){
 
@@ -87,6 +96,7 @@ int main(){
     printList();
     deleteAtEnd();
     deleteAtEnd();
+    deleteAtFront();
     printList();
 
     return 0;
